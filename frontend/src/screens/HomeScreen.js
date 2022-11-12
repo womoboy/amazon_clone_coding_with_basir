@@ -2,9 +2,10 @@ import React, { useEffect, useReducer } from "react";
 import axios from "axios";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Product from '../components/Prodcut'
-import { Helmet } from 'react-helmet-async';
-// import data from '../data';
+import Product from "../components/Prodcut";
+import { Helmet } from "react-helmet-async";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -26,8 +27,6 @@ const HomeScreen = () => {
     error: "",
   });
 
-  // const [products, setProducts] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: "FETCH_REQUEST" });
@@ -35,10 +34,8 @@ const HomeScreen = () => {
         const result = await axios.get("/api/products");
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (err) {
-        dispatch({ type: "FETCH_FAIL", paylaod: err.message });
+        dispatch({ type: "FETCH_FAIL", payload: err.message });
       }
-
-      // setProducts(result.data);
     };
 
     fetchData();
@@ -52,15 +49,15 @@ const HomeScreen = () => {
       <h1>Featured Products</h1>
       <div className="products">
         {loading ? (
-          <div>Loading...</div>
+          <LoadingBox />
         ) : error ? (
-          <div>{error}</div>
+          <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <Row>
             {products.map((product) => {
               return (
-                <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3" >
-                  <Product product={product}/>
+                <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+                  <Product product={product} />
                 </Col>
               );
             })}
