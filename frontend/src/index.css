@@ -47,6 +47,10 @@ main {
   color: #ffc000;
 }
 
+.img-large {
+  max-width: 100%;
+}
+
 @keyframes scaleUp {
   0% {
     transform: scale(1);

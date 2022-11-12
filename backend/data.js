@@ -1,18 +1,20 @@
 const data = {
     products: [
         {
+            id: 1,
             name: 'Nike Slime Shirt',
             slug: 'nike-slime-shirt',
             category: 'Shirts',
             image: '/images/p1.jpg',
             price: 23,
-            countInStock: 12,
+            countInStock: 0,
             brand: 'Nike',
             rating: 4.5,
             numReviews: 10,
             description: 'high quality shirt'
         },
         {
+            id: 2,
             name: 'Adidas Fit Shirt',
             slug: 'adidas-slime-shirt',
             category: 'Shirts',
@@ -25,6 +27,7 @@ const data = {
             description: 'high quality shirt'
         },
         {
+            id: 3,
             name: 'Nike Slime Pant',
             slug: 'nike-slime-pant',
             category: 'Pants',
@@ -37,6 +40,7 @@ const data = {
             description: 'high quality shirt'
         },
         {
+            id: 4,
             name: 'Adidas Slime Pant',
             slug: 'adidas-slime-pant',
             category: 'Pants',
