@@ -51,6 +51,10 @@ main {
   max-width: 100%;
 }
 
+.img-thumbnail {
+  height: 80px;
+}
+
 @keyframes scaleUp {
   0% {
     transform: scale(1);
