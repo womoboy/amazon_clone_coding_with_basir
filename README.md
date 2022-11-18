@@ -79,3 +79,9 @@
     3. npm install mongodb
     4. connect to mongodb database
     5. link mongodb+srv://reza2boyce:<R2boyce123>@cluster0.tmcgjjv.mongodb.net/amazona?retryWrites=true&w=majority
+20. Seed Sample Data
+    1. create Product model
+    2. create User model
+    3. create seed route
+    4. use route in server.js
+    5. seed sample product
