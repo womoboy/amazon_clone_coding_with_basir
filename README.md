@@ -73,3 +73,9 @@
     1. create sign in form
     2. add email and password
     3. add signin button
+19. Connect To MongoDB Database
+    1. create atlas mongodb database
+    2. install local mongodb database
+    3. npm install mongodb
+    4. connect to mongodb database
+    5. link mongodb+srv://reza2boyce:<R2boyce123>@cluster0.tmcgjjv.mongodb.net/amazona?retryWrites=true&w=majority
