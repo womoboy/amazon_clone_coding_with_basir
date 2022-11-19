@@ -1,35 +1,32 @@
+import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Store } from '../Store';
 import CheckoutSteps from '../components/CheckoutSteps';
 
-const ShippingAddress = () => {
+export default function ShippingAddressScreen() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
     userInfo,
-    cart: { ShippingAddress },
+    cart: { shippingAddress },
   } = state;
-  const [fullName, setFullName] = useState(ShippingAddress.fullName || '');
-  const [address, setAddress] = useState(ShippingAddress.address || '');
-  const [city, setCity] = useState(ShippingAddress.city || '');
+  const [fullName, setFullName] = useState(shippingAddress.fullName || '');
+  const [address, setAddress] = useState(shippingAddress.address || '');
+  const [city, setCity] = useState(shippingAddress.city || '');
   const [postalCode, setPostalCode] = useState(
-    ShippingAddress.postalCode || ''
+    shippingAddress.postalCode || ''
   );
-
   useEffect(() => {
     if (!userInfo) {
       navigate('/signin?redirect=/shipping');
     }
   }, [userInfo, navigate]);
-
-  const [country, setCountry] = useState(ShippingAddress.country || '');
-
+  const [country, setCountry] = useState(shippingAddress.country || '');
   const submitHandler = (e) => {
-    e.preventDedault();
+    e.preventDefault();
     ctxDispatch({
       type: 'SAVE_SHIPPING_ADDRESS',
       payload: {
@@ -50,18 +47,17 @@ const ShippingAddress = () => {
         country,
       })
     );
-
     navigate('/payment');
   };
-
   return (
     <div>
       <Helmet>
         <title>Shipping Address</title>
       </Helmet>
+
       <CheckoutSteps step1 step2></CheckoutSteps>
       <div className="container small-container">
-        <h1 className="my-3">Shipping</h1>
+        <h1 className="my-3">Shipping Address</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="fullName">
             <Form.Label>Full Name</Form.Label>
@@ -83,7 +79,7 @@ const ShippingAddress = () => {
             <Form.Label>City</Form.Label>
             <Form.Control
               value={city}
-              onChnage={(e) => setCity(e.target.value)}
+              onChange={(e) => setCity(e.target.value)}
               required
             />
           </Form.Group>
@@ -95,7 +91,7 @@ const ShippingAddress = () => {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="postalCode">
+          <Form.Group className="mb-3" controlId="country">
             <Form.Label>Country</Form.Label>
             <Form.Control
               value={country}
@@ -112,6 +108,4 @@ const ShippingAddress = () => {
       </div>
     </div>
   );
-};
-
-export default ShippingAddress;
+}

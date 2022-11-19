@@ -1,7 +1,8 @@
-import Row from 'react-bootstrap/esm/Row';
-import Col from 'react-bootstrap/esm/Col';
+import React from 'react';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-const CheckoutSteps = (props) => {
+export default function CheckoutSteps(props) {
   return (
     <Row className="checkout-steps">
       <Col className={props.step1 ? 'active' : ''}>Sign-In</Col>
@@ -10,6 +11,4 @@ const CheckoutSteps = (props) => {
       <Col className={props.step4 ? 'active' : ''}>Place Order</Col>
     </Row>
   );
-};
-
-export default CheckoutSteps;
+}
