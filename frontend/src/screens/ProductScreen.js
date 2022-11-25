@@ -55,6 +55,7 @@ function ProductScreen() {
       loading: true,
       error: '',
     });
+
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
@@ -65,6 +66,7 @@ function ProductScreen() {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
     };
+
     fetchData();
   }, [slug]);
 

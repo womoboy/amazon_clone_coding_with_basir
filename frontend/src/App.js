@@ -83,7 +83,6 @@ function App() {
               >
                 <i className="fas fa-bars"></i>
               </Button>
-
               <LinkContainer to="/">
                 <Navbar.Brand>amazona</Navbar.Brand>
               </LinkContainer>
@@ -260,7 +259,6 @@ function App() {
                   </AdminRoute>
                 }
               ></Route>
-
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </Container>
